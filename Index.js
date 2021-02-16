@@ -97,13 +97,13 @@ try {
   
 	(function UseSpreadOperator1() {
 		function add(a, b, c) {
-			return 1 + 3 + 6;
+			return a + b + c;
 		}
 
 		let values = [1, 3, 6];
 		
 		// Use spread operator to let the test pass.
-		let result = add(values);
+		let result = add(...values);
 
 		// Don't make changes below this line	
 		
@@ -194,7 +194,7 @@ try {
 		//let tmp = a;
 		//a = b;
 		//b = tmp; 
-		[a, b] = [2,1]
+		[a, b] = [b, a];
 
 		// Don't make changes below this line	
 		
@@ -296,7 +296,7 @@ try {
 		
 		// Use Object Spread Properties to let the tests succeed.
 		//let copy = obj;
-		let copy = { val:1 };
+		let copy = { ...obj};
 		// Don't make changes below this line	
 		
 		expect(copy.val).toBe(1);
@@ -310,19 +310,16 @@ try {
 
   
 	(function UseObjectSpreadProperties2() {
-		//let obj1 = { a: 100, b: 2, c: 300 };
-		//let obj2 = { b: 0, d: 100, e: 200};
-		//let obj3 = { b: 3, c: 4, d: 5 };
-		let obj1 = { a: 100, b: 0 };
-		let obj2 = { c: 4,};
-		let obj3 = { d: 100, e: 200, };
+		let obj1 = { a: 100, b: 2, c: 300 };
+		let obj2 = { b: 0, d: 100, e: 200};
+		let obj3 = { b: 3, c: 4, d: 5 };
 		// Change to let the tests succeed, but:
 		// - Do NOT use Object.assign()
 		// - Do use object spread properties
 		// - Think about the order!
 		//let result = { obj1, obj2, obj3 };
-		let result = { ...obj1,...obj2,...obj3 }
-		// Don't make changes below this line	
+		let result = { ...obj1,...obj3,...obj2 }
+		// Don't make changes below this line
 		
 		expect(result.a).toBe(100);
 		expect(result.b).toBe(0);
